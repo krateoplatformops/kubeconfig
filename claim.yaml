@@ -1,0 +1,71 @@
+apiVersion: templates.krateo.io/v1alpha1
+kind: AwsStack
+metadata:
+  labels:
+    deploymentId: 62ce8d7f7cd5448e7d8842f3
+  name: 62ce8d7f7cd5448e7d8842f3-awsstack
+spec:
+  _values: '{"name":"kubeconfig","description":"kubeconfig","namespace":"krateocon","clusterName":"kubeconfig","networkName":"kubeconfig","clusterNodes":"3","maxClusterNodes":"5","rdsName":"kubeconfig","rdsEngine":"postgres","rdsEngineVersion":"13.4","rdsDataDiskSizeGb":"10","rdsRegion":"eu-central-1","rdsStorageType":"standard","rdsInstanceClass":"db.t3.micro","provider":"github.com","organizationName":"krateoplatformops","repositoryName":"kubeconfig","owner":"guest","domain":"github.com","schema":"https","apiUrl":"https://api.github.com","deploymentId":"62ce8d7f7cd5448e7d8842f3"}'
+  dashboard:
+    description: kubeconfig
+    icon: fa-brands fa-aws
+    links:
+    - icon: fa-brands fa-git
+      title: krateoplatformops/kubeconfig
+      url: https://github.com/krateoplatformops/kubeconfig
+    - icon: fa-brands fa-aws
+      title: AWS Console
+      url: https://kiratech.awsapps.com/start#/
+    owner: guest
+    plugins:
+    - endpointName: argocd
+      icon: fa-solid fa-cookie
+      name: resources
+      type: argocd
+      value: 62ce8d7f7cd5448e7d8842f3-awsstack
+    - endpointName: github.com
+      icon: fa-solid fa-book-skull
+      name: documentation
+      type: doc
+      values:
+      - README.md
+    - icon: fa-brands fa-docker
+      name: kubernetes
+      type: kubernetes
+      value: deploymentId=62ce8d7f7cd5448e7d8842f3
+    tags:
+    - aws
+    - stack
+    - infrastructure
+    - rds
+  eks:
+    clusterName: kubeconfig
+  fromRepo:
+    apiUrl: https://api.github.com/
+    domain: github.com
+    organizationName: krateoplatformops
+    provider: github
+    repositoryName: krateo-template-awsstack
+    schema: https
+  namespace: krateocon
+  network:
+    networkName: kubeconfig
+  nodeGroup:
+    scalingConfig:
+      desiredSize: 3
+      maxSize: 5
+      minSize: 3
+  rds:
+    allocatedStorage: 10
+    dbInstanceClass: db.t3.micro
+    engineVersion: "13.4"
+    name: kubeconfig
+    region: eu-central-1
+    storageType: standard
+  toRepo:
+    apiUrl: https://api.github.com
+    domain: github.com
+    organizationName: krateoplatformops
+    provider: github.com
+    repositoryName: kubeconfig
+    schema: https
